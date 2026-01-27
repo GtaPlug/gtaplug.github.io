@@ -4,14 +4,21 @@
 <meta charset="UTF-8">
 <title>GTA Plug Modding Services</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
 /* BASE STYLES */
-body {
+* {
     margin: 0;
-    font-family: 'Segoe UI', Arial, sans-serif;
-    background: #0d0d0d;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Rajdhani', sans-serif;
+    background: #0a0a0a;
     color: #fff;
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 /* HEADER */
@@ -20,122 +27,224 @@ header {
     top: 0;
     z-index: 100;
     text-align: center;
-    background: rgba(17,17,17,0.9);
-    backdrop-filter: blur(10px);
-    padding: 15px 20px;
+    background: rgba(10,10,10,0.95);
+    backdrop-filter: blur(15px);
+    padding: 20px;
     border-bottom: 2px solid #00ffcc;
+    box-shadow: 0 5px 30px rgba(0,255,204,0.1);
 }
 
 header h1 {
-    margin: 0;
-    font-size: 30px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 32px;
+    font-weight: 900;
     color: #00ffcc;
-    transition: color 0.3s;
+    letter-spacing: 2px;
+    transition: all 0.3s;
 }
 
 header h1:hover {
-    color: #00ccaa;
+    color: #00ffaa;
+    text-shadow: 0 0 20px rgba(0,255,204,0.6);
     cursor: pointer;
 }
 
 nav {
-    margin-top: 10px;
+    margin-top: 15px;
     display: flex;
     justify-content: center;
-    gap: 25px;
+    gap: 35px;
 }
 
 nav a {
     color: #fff;
-    font-weight: bold;
-    transition: color 0.3s, transform 0.2s;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s;
+    position: relative;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #00ffcc;
+    transition: width 0.3s;
+}
+
+nav a:hover::after {
+    width: 100%;
 }
 
 nav a:hover {
-    color: #00ccaa;
-    transform: scale(1.05);
+    color: #00ffcc;
 }
 
 /* HERO SECTION */
 .hero {
-    height: 90vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    background: linear-gradient(to right, #111, #1a1a1a);
-    background-attachment: fixed;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+    position: relative;
     overflow: hidden;
+    padding: 40px 20px;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(0,255,204,0.1) 0%, transparent 70%);
+    top: -200px;
+    right: -200px;
+    animation: float 8s ease-in-out infinite;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(0,255,204,0.08) 0%, transparent 70%);
+    bottom: -150px;
+    left: -150px;
+    animation: float 10s ease-in-out infinite reverse;
+}
+
+@keyframes float {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    50% { transform: translate(50px, 50px) rotate(180deg); }
 }
 
 .hero h2 {
-    font-size: 48px;
-    margin-bottom: 20px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 56px;
+    font-weight: 900;
+    margin-bottom: 25px;
     color: #00ffcc;
-    white-space: nowrap;
-    overflow: hidden;
-    border-right: .15em solid #00ffcc;
-    animation: typing 3s steps(30, end), blink 0.7s step-end infinite;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 0 0 30px rgba(0,255,204,0.5);
+    z-index: 1;
+    animation: fadeInDown 1s ease-out;
 }
 
 .hero p {
-    max-width: 700px;
-    color: #ccc;
-    font-size: 20px;
-    margin-bottom: 35px;
+    max-width: 750px;
+    color: #c0c0c0;
+    font-size: 22px;
+    line-height: 1.6;
+    margin-bottom: 40px;
+    font-weight: 400;
+    z-index: 1;
+    animation: fadeInUp 1s ease-out 0.3s backwards;
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 /* HERO BUY NOW BUTTON */
 .hero-btn {
-    padding: 20px 60px;
+    padding: 22px 70px;
     background: linear-gradient(90deg, #00ffcc, #00ccaa);
     color: #000;
     border: none;
-    font-weight: bold;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
     cursor: pointer;
     border-radius: 50px;
-    font-size: 24px;
+    font-size: 26px;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    transition: all 0.3s ease;
-    box-shadow: 0 0 30px rgba(0,255,204,0.5);
+    letter-spacing: 3px;
+    transition: all 0.4s ease;
+    box-shadow: 0 10px 40px rgba(0,255,204,0.4);
     text-decoration: none;
     display: inline-block;
-    animation: pulse 2s infinite;
+    z-index: 1;
+    animation: fadeInUp 1s ease-out 0.6s backwards, pulse 2.5s infinite 1.5s;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.hero-btn:hover::before {
+    width: 300px;
+    height: 300px;
 }
 
 .hero-btn:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 50px rgba(0,255,204,0.9);
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 15px 60px rgba(0,255,204,0.6);
 }
 
 @keyframes pulse {
     0%, 100% {
-        box-shadow: 0 0 30px rgba(0,255,204,0.5);
+        box-shadow: 0 10px 40px rgba(0,255,204,0.4);
     }
     50% {
-        box-shadow: 0 0 50px rgba(0,255,204,0.8);
+        box-shadow: 0 10px 60px rgba(0,255,204,0.7);
     }
 }
 
-/* TYPING ANIMATION */
-@keyframes typing {
-    from { width: 0 }
-    to { width: 100% }
+/* SCROLL INDICATOR */
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    animation: bounce 2s infinite;
 }
 
-@keyframes blink {
-    50% { border-color: transparent; }
+.scroll-indicator::before {
+    content: '↓';
+    font-size: 40px;
+    color: #00ffcc;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+    40% { transform: translateX(-50%) translateY(-15px); }
+    60% { transform: translateX(-50%) translateY(-7px); }
 }
 
 /* SECTIONS */
 .section {
-    padding: 60px 20px;
-    max-width: 1100px;
+    padding: 100px 20px;
+    max-width: 1200px;
     margin: auto;
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(50px);
     transition: all 0.8s ease-out;
 }
 
@@ -144,174 +253,364 @@ nav a:hover {
     transform: translateY(0);
 }
 
+.section h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 42px;
+    font-weight: 900;
+    text-align: center;
+    margin-bottom: 60px;
+    color: #00ffcc;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 0 0 20px rgba(0,255,204,0.3);
+}
+
+/* WHY CHOOSE US */
+.why-us-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-bottom: 80px;
+}
+
+.why-card {
+    background: linear-gradient(145deg, #151515, #0f0f0f);
+    padding: 40px 30px;
+    border-radius: 15px;
+    border: 1px solid rgba(0,255,204,0.2);
+    text-align: center;
+    transition: all 0.4s ease;
+}
+
+.why-card:hover {
+    transform: translateY(-10px);
+    border-color: #00ffcc;
+    box-shadow: 0 15px 50px rgba(0,255,204,0.3);
+}
+
+.why-icon {
+    font-size: 50px;
+    margin-bottom: 20px;
+}
+
+.why-card h3 {
+    font-family: 'Orbitron', sans-serif;
+    color: #00ffcc;
+    font-size: 22px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.why-card p {
+    color: #b0b0b0;
+    line-height: 1.7;
+    font-size: 16px;
+}
+
 /* SERVICE CARDS GRID */
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
     margin-top: 30px;
 }
 
 .service-card {
     background: linear-gradient(145deg, #1a1a1a, #141414);
-    padding: 30px;
-    border-radius: 12px;
-    border: 1px solid #00ffcc;
-    box-shadow: 0 0 20px rgba(0,255,204,0.15);
-    transition: all 0.3s ease;
+    padding: 35px;
+    border-radius: 15px;
+    border: 1px solid rgba(0,255,204,0.3);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0,255,204,0.1), transparent);
+    transition: left 0.5s;
+}
+
+.service-card:hover::before {
+    left: 100%;
 }
 
 .service-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 0 35px rgba(0,255,204,0.4);
+    transform: translateY(-12px);
+    box-shadow: 0 20px 50px rgba(0,255,204,0.4);
     border-color: #00ffcc;
 }
 
 .service-card h3 {
+    font-family: 'Orbitron', sans-serif;
     color: #00ffcc;
-    font-size: 20px;
-    margin-bottom: 15px;
+    font-size: 22px;
+    margin-bottom: 18px;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
 }
 
 .service-card p {
-    color: #b0b0b0;
-    line-height: 1.6;
-    font-size: 15px;
+    color: #b8b8b8;
+    line-height: 1.8;
+    font-size: 16px;
 }
 
 /* PACKAGES GRID */
 .packages {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 25px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
 }
 
 /* CARD STYLING */
 .card {
-    background: #1a1a1a;
-    padding: 25px;
-    border-radius: 12px;
-    border: 1px solid #00ffcc;
-    box-shadow: 0 0 20px rgba(0,255,204,0.2);
-    transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+    background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
+    padding: 35px;
+    border-radius: 15px;
+    border: 2px solid rgba(0,255,204,0.3);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    transition: all 0.4s ease;
     position: relative;
     overflow: hidden;
 }
 
+.card::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(0,255,204,0.05) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s;
+}
+
+.card:hover::after {
+    opacity: 1;
+}
+
 .card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 0 30px rgba(0,255,204,0.6);
-    background: linear-gradient(145deg, #111, #1f1f1f);
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: 0 20px 60px rgba(0,255,204,0.5);
+    border-color: #00ffcc;
 }
 
 .card h3 {
+    font-family: 'Orbitron', sans-serif;
     color: #00ffcc;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    font-size: 24px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    z-index: 1;
+    position: relative;
 }
 
 .card ul {
     list-style: none;
     padding: 0;
+    z-index: 1;
+    position: relative;
 }
 
 .card li {
-    padding: 6px 0;
-    border-bottom: 1px solid #333;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    color: #d0d0d0;
+    font-size: 16px;
+}
+
+.card li:last-child {
+    border-bottom: none;
 }
 
 /* POPULAR BADGE */
 .popular-badge {
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 15px;
+    right: -35px;
     background: linear-gradient(135deg, #ff006e, #ff4d94);
     color: #fff;
-    padding: 8px 40px;
-    font-weight: bold;
-    font-size: 14px;
+    padding: 10px 50px;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    transform: rotate(45deg) translate(30%, -50%);
-    box-shadow: 0 4px 15px rgba(255, 0, 110, 0.5);
+    letter-spacing: 2px;
+    transform: rotate(45deg);
+    box-shadow: 0 5px 20px rgba(255, 0, 110, 0.6);
+    z-index: 10;
 }
 
 /* BUTTONS */
 button, .order-btn {
-    margin-top: 15px;
+    margin-top: 25px;
     width: 100%;
-    padding: 14px;
+    padding: 16px;
     background: linear-gradient(90deg, #00ffcc, #00ccaa);
     color: #000;
     border: none;
-    font-weight: bold;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
     cursor: pointer;
-    border-radius: 8px;
-    font-size: 17px;
+    border-radius: 10px;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
     transition: all 0.3s ease;
-    box-shadow: 0 0 10px rgba(0,255,204,0.3);
+    box-shadow: 0 5px 20px rgba(0,255,204,0.3);
+    z-index: 1;
+    position: relative;
 }
 
 button:hover, .order-btn:hover {
-    transform: scale(1.07);
-    box-shadow: 0 0 25px rgba(0,255,204,0.7);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 35px rgba(0,255,204,0.6);
+    background: linear-gradient(90deg, #00ccaa, #00ffcc);
+}
+
+/* FAQ SECTION */
+.faq-container {
+    max-width: 900px;
+    margin: auto;
+}
+
+.faq-item {
+    background: linear-gradient(145deg, #1a1a1a, #141414);
+    margin-bottom: 20px;
+    border-radius: 12px;
+    border: 1px solid rgba(0,255,204,0.2);
+    overflow: hidden;
+    transition: all 0.3s;
+}
+
+.faq-item:hover {
+    border-color: #00ffcc;
+}
+
+.faq-question {
+    padding: 25px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 600;
+    color: #00ffcc;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.faq-answer {
+    padding: 0 25px 25px 25px;
+    color: #b0b0b0;
+    line-height: 1.7;
+    font-size: 16px;
+}
+
+/* CONTACT SECTION */
+#contact {
+    text-align: center;
+}
+
+#contact p {
+    font-size: 18px;
+    color: #c0c0c0;
+    margin: 15px 0;
 }
 
 /* FOOTER */
 footer {
-    background: #111;
+    background: #0a0a0a;
     text-align: center;
-    padding: 30px;
-    color: #aaa;
-    font-size: 14px;
+    padding: 40px 20px;
+    color: #888;
+    font-size: 15px;
+    border-top: 1px solid rgba(0,255,204,0.2);
+}
+
+footer p {
+    margin: 10px 0;
 }
 
 /* DISCORD LINK */
 a.discord {
     color: #00ffcc;
-    font-weight: bold;
+    font-weight: 700;
+    font-size: 20px;
+    text-decoration: none;
     transition: all 0.3s ease;
+    display: inline-block;
 }
 
 a.discord:hover {
-    color: #00ccaa;
-    text-shadow: 0 0 10px #00ffcc;
-}
-
-/* ANIMATIONS */
-@keyframes fadeIn {
-    from {opacity:0; transform:translateY(30px);}
-    to {opacity:1; transform:translateY(0);}
+    color: #00ffaa;
+    text-shadow: 0 0 15px rgba(0,255,204,0.8);
+    transform: scale(1.05);
 }
 
 /* RESPONSIVE MOBILE */
 @media(max-width:768px){
-    .hero h2 { font-size: 32px; }
-    .hero p { font-size: 16px; }
-    .hero-btn { font-size: 18px; padding: 15px 40px; }
-    .card { padding: 20px; }
-    .service-card { padding: 25px; }
-    button { font-size: 15px; }
-    .popular-badge { font-size: 12px; padding: 6px 35px; }
+    .hero h2 { font-size: 36px; letter-spacing: 1px; }
+    .hero p { font-size: 18px; }
+    .hero-btn { font-size: 20px; padding: 18px 50px; letter-spacing: 2px; }
+    .section { padding: 60px 20px; }
+    .section h2 { font-size: 32px; }
+    .card { padding: 25px; }
+    .service-card { padding: 28px; }
+    button { font-size: 14px; }
+    .popular-badge { font-size: 11px; padding: 8px 40px; }
+    nav { gap: 20px; }
+    nav a { font-size: 14px; }
 }
 </style>
 </head>
 <body>
 
 <header>
-<a href="#home"><h1>GTA Plug Modding Services</h1></a>
+<a href="#home"><h1>GTA PLUG</h1></a>
 <nav>
+<a href="#why-us">Why Us</a>
 <a href="#services">Services</a>
 <a href="#packages">Packages</a>
-<a href="https://discord.com/channels/1303785056841498644/1372257903402025010" target="_blank">Contact</a>
+<a href="#faq">FAQ</a>
+<a href="#contact">Contact</a>
 </nav>
 </header>
 
 <div class="hero" id="home">
-<h2>Professional GTA V Custom Modding</h2>
-<p>We provide high-quality GTA V customization and modding services for PC Enhanced Edition. Safe, fast and professional.</p>
+<h2>Professional GTA V Modding</h2>
+<p>Premium customization and modding services for PC Enhanced Edition. Safe, fast and professional results guaranteed.</p>
 <a href="#packages" class="hero-btn">BUY NOW</a>
+<div class="scroll-indicator"></div>
+</div>
+
+<div class="section" id="why-us">
+<h2>Why Choose Us?</h2>
+<div class="why-us-grid">
+<div class="why-card">
+<div class="why-icon">🛡️</div>
+<h3>100% Safe</h3>
+<p>All services use proven safety protocols to protect your account and ensure worry-free modding.</p>
+</div>
+<div class="why-card">
+<div class="why-icon">⚡</div>
+<h3>Lightning Fast</h3>
+<p>Instant delivery on most packages. Get your mods within minutes, not days.</p>
+</div>
+<div class="why-card">
+<div class="why-icon">💬</div>
+<h3>24/7 Support</h3>
+<p>Expert support team ready to help with installation, troubleshooting, and questions anytime.</p>
+</div>
+</div>
 </div>
 
 <div class="section" id="services">
@@ -324,7 +623,7 @@ a.discord:hover {
 </div>
 
 <div class="service-card">
-<h3>Visual & Performance Mods</h3>
+<h3>Visual & Performance</h3>
 <p>Enhance graphics and optimize performance for the ultimate GTA V experience on your PC.</p>
 </div>
 
@@ -339,13 +638,13 @@ a.discord:hover {
 </div>
 
 <div class="service-card">
-<h3>Personal Account Modding</h3>
+<h3>Account Modding</h3>
 <p>Professional account customization services with guaranteed safety and security measures.</p>
 </div>
 
 <div class="service-card">
-<h3>Support & Guidance</h3>
-<p>24/7 expert support to help you with installation, troubleshooting, and optimization.</p>
+<h3>Expert Guidance</h3>
+<p>24/7 support to help you with installation, troubleshooting, and optimization.</p>
 </div>
 
 </div>
@@ -355,88 +654,131 @@ a.discord:hover {
 <h2>Packages</h2>
 <div class="packages">
 
-<!-- Heist Setup - billigst -->
 <div class="card">
-<h3>Heist Setup - €3.99</h3>
+<h3>Heist Setup</h3>
+<p style="color: #00ffcc; font-size: 28px; font-weight: 700; margin: 10px 0;">€3.99</p>
 <ul>
-<li>10 Modded heist (Instant)</li>
-<li>$30m+ cash (Safe)</li>
+<li>10 Modded heists (Instant)</li>
+<li>$30M+ cash (Safe)</li>
 <li>Instant delivery</li>
 </ul>
 <a href="https://discord.com/channels/1303785056841498644/1372249865555546283" target="_blank"><button>Order Now</button></a>
 </div>
 
-<!-- Basic Package -->
 <div class="card">
-<h3>Basic Package - €14.99</h3>
+<h3>Basic Package</h3>
+<p style="color: #00ffcc; font-size: 28px; font-weight: 700; margin: 10px 0;">€14.99</p>
 <ul>
 <li>RP level 500</li>
 <li>8 modded outfits</li>
 <li>8 modded vehicles</li>
-<li>Most businesses</li>
-<li>$50m cash (Safe)</li>
+<li>Most businesses unlocked</li>
+<li>$50M cash (Safe)</li>
 </ul>
 <a href="https://discord.com/channels/1303785056841498644/1372249865555546283" target="_blank"><button>Order Now</button></a>
 </div>
 
-<!-- Elite Package - MED POPULAR BADGE -->
 <div class="card">
 <div class="popular-badge">POPULAR</div>
-<h3>Elite Package - €24.99</h3>
+<h3>Elite Package</h3>
+<p style="color: #00ffcc; font-size: 28px; font-weight: 700; margin: 10px 0;">€24.99</p>
 <ul>
 <li>Fully modded account</li>
-<li>Unlock alls</li>
+<li>Unlock all features</li>
 <li>Every achievement</li>
-<li>RP lv 1000</li>
-<li>15 modded cars of your choice</li>
-<li>15 modded outfits of your choice</li>
-<li>Every businesses</li>
-<li>$80m cash (Safe)</li>
+<li>RP level 1000</li>
+<li>15 modded cars of choice</li>
+<li>15 modded outfits of choice</li>
+<li>All businesses unlocked</li>
+<li>$80M cash (Safe)</li>
 </ul>
 <a href="https://discord.com/channels/1303785056841498644/1372249865555546283" target="_blank"><button>Order Now</button></a>
 </div>
 
-<!-- Ultimate Package - dyrest -->
 <div class="card">
-<h3>Ultimate Package - €49.99</h3>
+<h3>Ultimate Package</h3>
+<p style="color: #00ffcc; font-size: 28px; font-weight: 700; margin: 10px 0;">€49.99</p>
 <ul>
-<li>Fully Modded Account</li>
-<li>RP Level of Your Choice</li>
-<li>Cash Amount of Your Choice</li>
-<li>Unlock Everything You Want</li>
-<li>Choose Any Number of Modded Cars</li>
-<li>Choose Any Number of Modded Outfits</li>
-<li>All Businesses + Extra Features of your choice</li>
-<li><strong>Personalized requests? You decide it all!</strong></li>
+<li>Fully modded account</li>
+<li>RP level of your choice</li>
+<li>Cash amount of your choice</li>
+<li>Unlock everything you want</li>
+<li>Unlimited modded cars</li>
+<li>Unlimited modded outfits</li>
+<li>All businesses + extras</li>
+<li><strong>100% Personalized</strong></li>
 </ul>
 <a href="https://discord.com/channels/1303785056841498644/1372249865555546283" target="_blank"><button>Order Now</button></a>
 </div>
 
+</div>
+</div>
+
+<div class="section" id="faq">
+<h2>FAQ</h2>
+<div class="faq-container">
+<div class="faq-item">
+<div class="faq-question">Is it safe to use your services? ▼</div>
+<div class="faq-answer">Yes! All our services use proven safety protocols to protect your account. We've served thousands of customers with zero bans.</div>
+</div>
+<div class="faq-item">
+<div class="faq-question">How long does delivery take? ▼</div>
+<div class="faq-answer">Most packages are delivered within minutes. Some custom requests may take up to 24 hours.</div>
+</div>
+<div class="faq-item">
+<div class="faq-question">What payment methods do you accept? ▼</div>
+<div class="faq-answer">We currently accept PayPal for secure and fast transactions.</div>
+</div>
+<div class="faq-item">
+<div class="faq-question">Can I get a refund? ▼</div>
+<div class="faq-answer">We offer refunds if the service wasn't delivered as promised. Contact our support team on Discord.</div>
+</div>
 </div>
 </div>
 
 <div class="section" id="contact">
 <h2>Contact & Orders</h2>
 <p>Create a ticket on our Discord server to purchase services.</p>
-<p><a class="discord" href="https://discord.gg/eFQzeBFkBn" target="_blank">Join our Discord</a></p>
-<p>Payment method: PayPal</p>
+<p><a class="discord" href="https://discord.gg/eFQzeBFkBn" target="_blank">📞 Join Discord Server</a></p>
+<p style="margin-top: 30px; color: #888;">Payment Method: PayPal</p>
 </div>
 
 <footer>
-<p>© 2026 GTA Plug Modding Services. Not affiliated with Rockstar Games.</p>
+<p>© 2026 GTA Plug Modding Services</p>
+<p>Not affiliated with Rockstar Games</p>
 </footer>
 
 <script>
-// Fade-in sections
+// Fade-in sections on scroll
 const sections = document.querySelectorAll('.section');
-const observer = new IntersectionObserver(entries=>{
-    entries.forEach(entry=>{
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
         if(entry.isIntersecting){
             entry.target.classList.add('visible');
         }
     });
-},{ threshold:0.2 });
+}, { threshold: 0.15 });
+
 sections.forEach(section => observer.observe(section));
+
+// FAQ accordion (simple version)
+document.querySelectorAll('.faq-question').forEach(question => {
+    question.addEventListener('click', () => {
+        const answer = question.nextElementSibling;
+        if(answer.style.display === 'block'){
+            answer.style.display = 'none';
+            question.textContent = question.textContent.replace('▲', '▼');
+        } else {
+            answer.style.display = 'block';
+            question.textContent = question.textContent.replace('▼', '▲');
+        }
+    });
+});
+
+// Hide FAQ answers by default
+document.querySelectorAll('.faq-answer').forEach(answer => {
+    answer.style.display = 'none';
+});
 </script>
 
 </body>
