@@ -83,6 +83,40 @@ nav a:hover {
     max-width: 700px;
     color: #ccc;
     font-size: 20px;
+    margin-bottom: 35px;
+}
+
+/* HERO BUY NOW BUTTON */
+.hero-btn {
+    padding: 20px 60px;
+    background: linear-gradient(90deg, #00ffcc, #00ccaa);
+    color: #000;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 50px;
+    font-size: 24px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 30px rgba(0,255,204,0.5);
+    text-decoration: none;
+    display: inline-block;
+    animation: pulse 2s infinite;
+}
+
+.hero-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 50px rgba(0,255,204,0.9);
+}
+
+@keyframes pulse {
+    0%, 100% {
+        box-shadow: 0 0 30px rgba(0,255,204,0.5);
+    }
+    50% {
+        box-shadow: 0 0 50px rgba(0,255,204,0.8);
+    }
 }
 
 /* TYPING ANIMATION */
@@ -200,6 +234,7 @@ a.discord:hover {
 @media(max-width:768px){
     .hero h2 { font-size: 32px; }
     .hero p { font-size: 16px; }
+    .hero-btn { font-size: 18px; padding: 15px 40px; }
     .card { padding: 20px; }
     button { font-size: 15px; }
 }
@@ -219,6 +254,7 @@ a.discord:hover {
 <div class="hero" id="home">
 <h2>Professional GTA V Custom Modding</h2>
 <p>We provide high-quality GTA V customization and modding services for PC Enhanced Edition. Safe, fast and professional.</p>
+<a href="#packages" class="hero-btn">BUY NOW</a>
 </div>
 
 <div class="section" id="services">
