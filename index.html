@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <title>GTA Plug Modding Services</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&family=Black+Ops+One&display=swap" rel="stylesheet">
 <style>
 /* BASE STYLES */
 * {
@@ -35,18 +35,24 @@ header {
 }
 
 header h1 {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 32px;
-    font-weight: 900;
+    font-family: 'Black Ops One', cursive;
+    font-size: 38px;
+    font-weight: 400;
     color: #00ffcc;
-    letter-spacing: 2px;
+    letter-spacing: 4px;
     transition: all 0.3s;
+    text-shadow: 0 0 10px rgba(0,255,204,0.5), 
+                 0 0 20px rgba(0,255,204,0.3),
+                 0 0 30px rgba(0,255,204,0.2);
 }
 
 header h1:hover {
     color: #00ffaa;
-    text-shadow: 0 0 20px rgba(0,255,204,0.6);
+    text-shadow: 0 0 20px rgba(0,255,204,0.8), 
+                 0 0 40px rgba(0,255,204,0.6),
+                 0 0 60px rgba(0,255,204,0.4);
     cursor: pointer;
+    transform: scale(1.05);
 }
 
 nav {
@@ -569,6 +575,7 @@ a.discord:hover {
     .popular-badge { font-size: 11px; padding: 8px 40px; }
     nav { gap: 20px; }
     nav a { font-size: 14px; }
+    header h1 { font-size: 28px; letter-spacing: 2px; }
 }
 </style>
 </head>
