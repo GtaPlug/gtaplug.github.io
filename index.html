@@ -5,74 +5,130 @@
 <title>GTA Plug Modding Services</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
+/* BASE STYLES */
 body {
     margin: 0;
     font-family: Arial, sans-serif;
     background: #0d0d0d;
     color: #fff;
+    scroll-behavior: smooth;
 }
 
+a {
+    text-decoration: none;
+}
+
+/* HEADER */
 header {
     background: #111;
-    padding: 20px;
-    text-align: center;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     border-bottom: 2px solid #00ffcc;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 header h1 {
     margin: 0;
     color: #00ffcc;
-}
-
-header a {
-    text-decoration: none;
+    font-size: 22px;
+    transition: color 0.3s;
 }
 
 header h1:hover {
     color: #00ccaa;
+    cursor: pointer;
+}
+
+/* NAVIGATION */
+nav {
+    display: flex;
+    gap: 15px;
 }
 
 nav a {
-    margin: 0 15px;
     color: #fff;
-    text-decoration: none;
     font-weight: bold;
+    transition: color 0.3s;
 }
 
+nav a:hover {
+    color: #00ccaa;
+}
+
+/* HAMBURGER MENU */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 4px;
+}
+
+.hamburger div {
+    width: 25px;
+    height: 3px;
+    background: #00ffcc;
+    transition: 0.3s;
+}
+
+/* HERO SECTION */
 .hero {
-    padding: 60px 20px;
+    padding: 80px 20px;
     text-align: center;
     background: linear-gradient(to right, #111, #1a1a1a);
+    animation: fadeIn 1s ease-in;
 }
 
 .hero h2 {
     font-size: 36px;
+    margin-bottom: 10px;
 }
 
 .hero p {
     color: #ccc;
     max-width: 700px;
     margin: auto;
+    font-size: 18px;
 }
 
+/* SECTIONS */
 .section {
-    padding: 40px 20px;
+    padding: 60px 20px;
     max-width: 1100px;
     margin: auto;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease-out;
 }
 
+.section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* PACKAGES GRID */
 .packages {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
 }
 
+/* CARD STYLING */
 .card {
     background: #1a1a1a;
     padding: 20px;
     border-radius: 10px;
     border: 1px solid #00ffcc;
-    box-shadow: 0 0 10px rgba(0,255,204,0.2);
+    box-shadow: 0 0 15px rgba(0,255,204,0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px rgba(0,255,204,0.4);
 }
 
 .card h3 {
@@ -89,45 +145,92 @@ nav a {
     border-bottom: 1px solid #333;
 }
 
-button {
+/* BUTTONS */
+button, .order-btn {
     margin-top: 15px;
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     background: #00ffcc;
     color: #000;
     border: none;
     font-weight: bold;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: background 0.3s, transform 0.2s;
 }
 
-button:hover {
+button:hover, .order-btn:hover {
     background: #00ccaa;
+    transform: scale(1.05);
 }
 
+/* FOOTER */
 footer {
     background: #111;
     text-align: center;
-    padding: 20px;
+    padding: 25px;
     margin-top: 40px;
-    color: #777;
+    color: #aaa;
+    font-size: 14px;
 }
 
+/* DISCORD LINK */
 a.discord {
     color: #00ffcc;
-    text-decoration: none;
     font-weight: bold;
+    transition: color 0.3s;
+}
+
+a.discord:hover {
+    color: #00ccaa;
+}
+
+/* ANIMATIONS */
+@keyframes fadeIn {
+    from {opacity:0; transform:translateY(20px);}
+    to {opacity:1; transform:translateY(0);}
+}
+
+/* RESPONSIVE STYLES */
+@media (max-width: 768px) {
+    nav {
+        display: none;
+        flex-direction: column;
+        background: #111;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        width: 180px;
+        border: 1px solid #00ffcc;
+        border-radius: 6px;
+        padding: 10px;
+    }
+
+    nav.show {
+        display: flex;
+    }
+
+    .hamburger {
+        display: flex;
+    }
 }
 </style>
 </head>
-
 <body>
 
 <header>
 <a href="#home">
-  <h1>gtaPlug Modding Services</h1>
+<h1>GTA Plug Modding Services</h1>
 </a>
-<nav>
+
+<div class="hamburger" id="hamburger">
+    <div></div>
+    <div></div>
+    <div></div>
+</div>
+
+<nav id="navMenu">
 <a href="#services">Services</a>
 <a href="#packages">Packages</a>
 <a href="https://discord.com/channels/1303785056841498644/1372257903402025010" target="_blank">Contact</a>
@@ -210,8 +313,29 @@ a.discord {
 </div>
 
 <footer>
-<p>© 2026 gtaPlug Modding Services. Not affiliated with Rockstar Games.</p>
+<p>© 2026 GTA Plug Modding Services. Not affiliated with Rockstar Games.</p>
 </footer>
+
+<script>
+// Scroll-triggered fade-in
+const sections = document.querySelectorAll('.section');
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+            entry.target.classList.add('visible');
+        }
+    });
+}, { threshold: 0.2 });
+
+sections.forEach(section => observer.observe(section));
+
+// Hamburger menu toggle
+const hamburger = document.getElementById('hamburger');
+const navMenu = document.getElementById('navMenu');
+hamburger.addEventListener('click', () => {
+    navMenu.classList.toggle('show');
+});
+</script>
 
 </body>
 </html>
