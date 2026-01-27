@@ -144,6 +144,43 @@ nav a:hover {
     transform: translateY(0);
 }
 
+/* SERVICE CARDS GRID */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.service-card {
+    background: linear-gradient(145deg, #1a1a1a, #141414);
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid #00ffcc;
+    box-shadow: 0 0 20px rgba(0,255,204,0.15);
+    transition: all 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 0 35px rgba(0,255,204,0.4);
+    border-color: #00ffcc;
+}
+
+.service-card h3 {
+    color: #00ffcc;
+    font-size: 20px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.service-card p {
+    color: #b0b0b0;
+    line-height: 1.6;
+    font-size: 15px;
+}
+
 /* PACKAGES GRID */
 .packages {
     display: grid;
@@ -159,6 +196,8 @@ nav a:hover {
     border: 1px solid #00ffcc;
     box-shadow: 0 0 20px rgba(0,255,204,0.2);
     transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+    position: relative;
+    overflow: hidden;
 }
 
 .card:hover {
@@ -180,6 +219,22 @@ nav a:hover {
 .card li {
     padding: 6px 0;
     border-bottom: 1px solid #333;
+}
+
+/* POPULAR BADGE */
+.popular-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: linear-gradient(135deg, #ff006e, #ff4d94);
+    color: #fff;
+    padding: 8px 40px;
+    font-weight: bold;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transform: rotate(45deg) translate(30%, -50%);
+    box-shadow: 0 4px 15px rgba(255, 0, 110, 0.5);
 }
 
 /* BUTTONS */
@@ -236,7 +291,9 @@ a.discord:hover {
     .hero p { font-size: 16px; }
     .hero-btn { font-size: 18px; padding: 15px 40px; }
     .card { padding: 20px; }
+    .service-card { padding: 25px; }
     button { font-size: 15px; }
+    .popular-badge { font-size: 12px; padding: 6px 35px; }
 }
 </style>
 </head>
@@ -259,15 +316,39 @@ a.discord:hover {
 
 <div class="section" id="services">
 <h2>Our Services</h2>
-<ul>
-<li>Custom cars & outfits</li>
-<li>Visual & performance mods</li>
-<li>RP server setup</li>
-<li>UI & HUD customization</li>
-<li>Personal account modding</li>
-<li>Support & guidance</li>
-<li>Safe and secure</li>
-</ul>
+<div class="services-grid">
+
+<div class="service-card">
+<h3>Custom Cars & Outfits</h3>
+<p>Personalize your gaming experience with exclusive custom vehicles and unique outfits tailored to your style.</p>
+</div>
+
+<div class="service-card">
+<h3>Visual & Performance Mods</h3>
+<p>Enhance graphics and optimize performance for the ultimate GTA V experience on your PC.</p>
+</div>
+
+<div class="service-card">
+<h3>RP Server Setup</h3>
+<p>Complete roleplay server configuration for immersive multiplayer experiences with your community.</p>
+</div>
+
+<div class="service-card">
+<h3>UI & HUD Customization</h3>
+<p>Transform your interface with custom menus, HUD elements, and visual overlays.</p>
+</div>
+
+<div class="service-card">
+<h3>Personal Account Modding</h3>
+<p>Professional account customization services with guaranteed safety and security measures.</p>
+</div>
+
+<div class="service-card">
+<h3>Support & Guidance</h3>
+<p>24/7 expert support to help you with installation, troubleshooting, and optimization.</p>
+</div>
+
+</div>
 </div>
 
 <div class="section" id="packages">
@@ -298,8 +379,9 @@ a.discord:hover {
 <a href="https://discord.com/channels/1303785056841498644/1372249865555546283" target="_blank"><button>Order Now</button></a>
 </div>
 
-<!-- Elite Package -->
+<!-- Elite Package - MED POPULAR BADGE -->
 <div class="card">
+<div class="popular-badge">POPULAR</div>
 <h3>Elite Package - €24.99</h3>
 <ul>
 <li>Fully modded account</li>
