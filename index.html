@@ -1,3 +1,6 @@
+Jeg kan hjelpe deg med å legge til en bankkort-betalingsknapp på nettsiden din. Her er den oppdaterte koden med en synlig bankkort-betalingsmulighet:
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,8 +9,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&family=Black+Ops+One&display=swap" rel="stylesheet">
 <style>
-/* BASE STYLES */
-* {
+/ BASE STYLES /
+ {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -21,7 +24,7 @@ body {
     overflow-x: hidden;
 }
 
-/* HEADER */
+/ HEADER /
 header {
     position: sticky;
     top: 0;
@@ -92,7 +95,7 @@ nav a:hover {
     color: #00ffcc;
 }
 
-/* HERO SECTION */
+/ HERO SECTION /
 .hero {
     min-height: 100vh;
     display: flex;
@@ -167,7 +170,7 @@ nav a:hover {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* HERO BUY NOW BUTTON */
+/ HERO BUY NOW BUTTON /
 .hero-btn {
     padding: 22px 70px;
     background: linear-gradient(90deg, #00ffcc, #00ccaa);
@@ -222,7 +225,7 @@ nav a:hover {
     }
 }
 
-/* SCROLL INDICATOR */
+/ SCROLL INDICATOR /
 .scroll-indicator {
     position: absolute;
     bottom: 30px;
@@ -244,7 +247,7 @@ nav a:hover {
     60% { transform: translateX(-50%) translateY(-7px); }
 }
 
-/* SECTIONS */
+/ SECTIONS /
 .section {
     padding: 100px 20px;
     max-width: 1200px;
@@ -271,7 +274,7 @@ nav a:hover {
     text-shadow: 0 0 20px rgba(0,255,204,0.3);
 }
 
-/* WHY CHOOSE US */
+/ WHY CHOOSE US /
 .why-us-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -314,7 +317,7 @@ nav a:hover {
     font-size: 16px;
 }
 
-/* SERVICE CARDS GRID */
+/ SERVICE CARDS GRID /
 .services-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -369,14 +372,14 @@ nav a:hover {
     font-size: 16px;
 }
 
-/* PACKAGES GRID */
+/ PACKAGES GRID /
 .packages {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
 }
 
-/* CARD STYLING */
+/ CARD STYLING /
 .card {
     background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
     padding: 35px;
@@ -439,7 +442,7 @@ nav a:hover {
     border-bottom: none;
 }
 
-/* POPULAR BADGE */
+/ POPULAR BADGE /
 .popular-badge {
     position: absolute;
     top: 15px;
@@ -457,336 +460,17 @@ nav a:hover {
     z-index: 10;
 }
 
-/* BUTTONS */
-button, .order-btn {
+/ PAYMENT BUTTONS CONTAINER /
+.payment-buttons {
+    display: flex;
+    gap: 15px;
     margin-top: 25px;
-    width: 100%;
-    padding: 16px;
-    background: linear-gradient(90deg, #00ffcc, #00ccaa);
-    color: #000;
-    border: none;
-    font-family: 'Orbitron', sans-serif;
-    font-weight: 700;
-    cursor: pointer;
-    border-radius: 10px;
-    font-size: 16px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    transition: all 0.3s ease;
-    box-shadow: 0 5px 20px rgba(0,255,204,0.3);
     z-index: 1;
     position: relative;
 }
 
-button:hover, .order-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 35px rgba(0,255,204,0.6);
-    background: linear-gradient(90deg, #00ccaa, #00ffcc);
-}
-
-/* FAQ SECTION */
-.faq-container {
-    max-width: 900px;
-    margin: auto;
-}
-
-.faq-item {
-    background: linear-gradient(145deg, #1a1a1a, #141414);
-    margin-bottom: 20px;
-    border-radius: 12px;
-    border: 1px solid rgba(0,255,204,0.2);
-    overflow: hidden;
-    transition: all 0.3s;
-}
-
-.faq-item:hover {
-    border-color: #00ffcc;
-}
-
-.faq-question {
-    padding: 25px;
-    cursor: pointer;
-    font-size: 18px;
-    font-weight: 600;
-    color: #00ffcc;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.faq-answer {
-    padding: 0 25px 25px 25px;
-    color: #b0b0b0;
-    line-height: 1.7;
-    font-size: 16px;
-}
-
-/* CONTACT SECTION */
-#contact {
-    text-align: center;
-}
-
-#contact p {
-    font-size: 18px;
-    color: #c0c0c0;
-    margin: 15px 0;
-}
-
-/* FOOTER */
-footer {
-    background: #0a0a0a;
-    text-align: center;
-    padding: 40px 20px;
-    color: #888;
-    font-size: 15px;
-    border-top: 1px solid rgba(0,255,204,0.2);
-}
-
-footer p {
-    margin: 10px 0;
-}
-
-/* DISCORD LINK */
-a.discord {
-    color: #00ffcc;
-    font-weight: 700;
-    font-size: 20px;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    display: inline-block;
-}
-
-a.discord:hover {
-    color: #00ffaa;
-    text-shadow: 0 0 15px rgba(0,255,204,0.8);
-    transform: scale(1.05);
-}
-
-/* RESPONSIVE MOBILE */
-@media(max-width:768px){
-    .hero h2 { font-size: 36px; letter-spacing: 1px; }
-    .hero p { font-size: 18px; }
-    .hero-btn { font-size: 20px; padding: 18px 50px; letter-spacing: 2px; }
-    .section { padding: 60px 20px; }
-    .section h2 { font-size: 32px; }
-    .card { padding: 25px; }
-    .service-card { padding: 28px; }
-    button { font-size: 14px; }
-    .popular-badge { font-size: 11px; padding: 8px 40px; }
-    nav { gap: 20px; }
-    nav a { font-size: 14px; }
-    header h1 { font-size: 28px; letter-spacing: 2px; }
-}
-</style>
-</head>
-<body>
-
-<header>
-<a href="#home"><h1>GTA PLUG</h1></a>
-<nav>
-<a href="#why-us">Why Us</a>
-<a href="#services">Services</a>
-<a href="#packages">Packages</a>
-<a href="#faq">FAQ</a>
-<a href="#contact">Contact</a>
-</nav>
-</header>
-
-<div class="hero" id="home">
-<h2>Professional GTA V Modding</h2>
-<p>Premium customization and modding services for PC Enhanced Edition. Safe, fast and professional results guaranteed.</p>
-<a href="#packages" class="hero-btn">BUY NOW</a>
-<div class="scroll-indicator"></div>
-</div>
-
-<div class="section" id="why-us">
-<h2>Why Choose Us?</h2>
-<div class="why-us-grid">
-<div class="why-card">
-<div class="why-icon">🛡️</div>
-<h3>100% Safe</h3>
-<p>All services use proven safety protocols to protect your account and ensure worry-free modding.</p>
-</div>
-<div class="why-card">
-<div class="why-icon">⚡</div>
-<h3>Lightning Fast</h3>
-<p>Instant delivery on most packages. Get your mods within minutes, not days.</p>
-</div>
-<div class="why-card">
-<div class="why-icon">💬</div>
-<h3>24/7 Support</h3>
-<p>Expert support team ready to help with installation, troubleshooting, and questions anytime.</p>
-</div>
-</div>
-</div>
-
-<div class="section" id="services">
-<h2>Our Services</h2>
-<div class="services-grid">
-
-<div class="service-card">
-<h3>Custom Cars & Outfits</h3>
-<p>Personalize your gaming experience with exclusive custom vehicles and unique outfits tailored to your style.</p>
-</div>
-
-<div class="service-card">
-<h3>Visual & Performance</h3>
-<p>Enhance graphics and optimize performance for the ultimate GTA V experience on your PC.</p>
-</div>
-
-<div class="service-card">
-<h3>RP Server Setup</h3>
-<p>Complete roleplay server configuration for immersive multiplayer experiences with your community.</p>
-</div>
-
-<div class="service-card">
-<h3>UI & HUD Customization</h3>
-<p>Transform your interface with custom menus, HUD elements, and visual overlays.</p>
-</div>
-
-<div class="service-card">
-<h3>Account Modding</h3>
-<p>Professional account customization services with guaranteed safety and security measures.</p>
-</div>
-
-<div class="service-card">
-<h3>Expert Guidance</h3>
-<p>24/7 support to help you with installation, troubleshooting, and optimization.</p>
-</div>
-
-</div>
-</div>
-
-<div class="section" id="packages">
-<h2>Packages</h2>
-<div class="packages">
-
-<div class="card">
-<h3>Heist Setup</h3>
-<p style="color: #00ffcc; font-size: 28px; font-weight: 700; margin: 10px 0;">€4.99</p>
-<ul>
-<li>10 Modded heists (Instant)</li>
-<li>$30M+ cash (Safe)</li>
-<li>Instant delivery</li>
-</ul>
-<a href="https://discord.com/channels/1303785056841498644/1372249865555546283" target="_blank"><button>Order Now</button></a>
-</div>
-
-<div class="card">
-<h3>Basic Package</h3>
-<p style="color: #00ffcc; font-size: 28px; font-weight: 700; margin: 10px 0;">€19.99</p>
-<ul>
-<li>RP level 500</li>
-<li>8 modded outfits</li>
-<li>8 modded vehicles</li>
-<li>Most businesses unlocked</li>
-<li>$50M cash (Safe)</li>
-</ul>
-<a href="https://discord.com/channels/1303785056841498644/1372249865555546283" target="_blank"><button>Order Now</button></a>
-</div>
-
-<div class="card">
-<div class="popular-badge">POPULAR</div>
-<h3>Elite Package</h3>
-<p style="color: #00ffcc; font-size: 28px; font-weight: 700; margin: 10px 0;">€29.99</p>
-<ul>
-<li>Fully modded account</li>
-<li>Unlock all features</li>
-<li>Every achievement</li>
-<li>RP level 1000</li>
-<li>15 modded cars of choice</li>
-<li>15 modded outfits of choice</li>
-<li>All businesses unlocked</li>
-<li>$80M cash (Safe)</li>
-</ul>
-<a href="https://discord.com/channels/1303785056841498644/1372249865555546283" target="_blank"><button>Order Now</button></a>
-</div>
-
-<div class="card">
-<h3>Ultimate Package</h3>
-<p style="color: #00ffcc; font-size: 28px; font-weight: 700; margin: 10px 0;">€49.99</p>
-<ul>
-<li>Fully modded account</li>
-<li>RP level of your choice</li>
-<li>Cash amount of your choice</li>
-<li>Unlock everything you want</li>
-<li>Unlimited modded cars</li>
-<li>Unlimited modded outfits</li>
-<li>All businesses + extras</li>
-<li><strong>100% Personalized</strong></li>
-</ul>
-<a href="https://discord.com/channels/1303785056841498644/1372249865555546283" target="_blank"><button>Order Now</button></a>
-</div>
-
-</div>
-</div>
-
-<div class="section" id="faq">
-<h2>FAQ</h2>
-<div class="faq-container">
-<div class="faq-item">
-<div class="faq-question">Is it safe to use your services? ▼</div>
-<div class="faq-answer">Yes! All our services use proven safety protocols to protect your account. We've served many customers with zero bans.</div>
-</div>
-<div class="faq-item">
-<div class="faq-question">How long does delivery take? ▼</div>
-<div class="faq-answer">Most packages are delivered within minutes. Some custom requests may take up to 24 hours.</div>
-</div>
-<div class="faq-item">
-<div class="faq-question">What payment methods do you accept? ▼</div>
-<div class="faq-answer">We currently accept PayPal for secure and fast transactions.</div>
-</div>
-<div class="faq-item">
-<div class="faq-question">Can I get a refund? ▼</div>
-<div class="faq-answer">We offer refunds if the service wasn't delivered as promised. Contact our support team on Discord.</div>
-</div>
-</div>
-</div>
-
-<div class="section" id="contact">
-<h2>Contact & Orders</h2>
-<p>Create a ticket on our Discord server to purchase services.</p>
-<p><a class="discord" href="https://discord.gg/eFQzeBFkBn" target="_blank">📞 Join Discord Server</a></p>
-<p style="margin-top: 30px; color: #888;">Payment Method: PayPal</p>
-</div>
-
-<footer>
-<p>© 2026 GTA Plug Modding Services</p>
-<p>Not affiliated with Rockstar Games</p>
-</footer>
-
-<script>
-// Fade-in sections on scroll
-const sections = document.querySelectorAll('.section');
-const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-        if(entry.isIntersecting){
-            entry.target.classList.add('visible');
-        }
-    });
-}, { threshold: 0.15 });
-
-sections.forEach(section => observer.observe(section));
-
-// FAQ accordion (simple version)
-document.querySelectorAll('.faq-question').forEach(question => {
-    question.addEventListener('click', () => {
-        const answer = question.nextElementSibling;
-        if(answer.style.display === 'block'){
-            answer.style.display = 'none';
-            question.textContent = question.textContent.replace('▲', '▼');
-        } else {
-            answer.style.display = 'block';
-            question.textContent = question.textContent.replace('▼', '▲');
-        }
-    });
-});
-
-// Hide FAQ answers by default
-document.querySelectorAll('.faq-answer').forEach(answer => {
-    answer.style.display = 'none';
-});
-</script>
-
-</body>
-</html>
+/ DISCORD BUTTON */
+.discord-btn {
+    flex: 1;
+    padding: 16px;
+    background: linear-gradient(90deg, #5865F2, #4752C4);
